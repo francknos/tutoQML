@@ -20,6 +20,7 @@ qt_add_qml_module(QML_ListView
     QML_FILES Main.qml
     RESOURCES ressources.qrc
     SOURCES listcountrymodel.h listcountrymodel.cpp
+    SOURCES countrylist.h countrylist.cpp
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

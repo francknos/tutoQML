@@ -3,16 +3,20 @@
 
 #include <QAbstractListModel>
 
+class CountryList;
+
 class ListCountryModel : public QAbstractListModel
 {
     Q_OBJECT
+    Q_PROPERTY(CountryList *listCountry READ list WRITE setList)
 
 public:
     explicit ListCountryModel(QObject *parent = nullptr);
 
     enum {
         DoneRole = Qt::UserRole,
-        DescriptionRole
+        DescriptionRole,
+        FlagRole
     };
 
     // Basic functionality:
@@ -27,10 +31,12 @@ public:
 
     virtual QHash<int, QByteArray> roleNames() const override;
 
-private:
+    CountryList *list() const;
+    void setList(CountryList *newList);
 
-    // QAbstractItemModel interface
-public:
+private:
+    CountryList *mList;
+
 };
 
 #endif // LISTCOUNTRYMODEL_H

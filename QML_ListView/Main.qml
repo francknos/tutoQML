@@ -97,7 +97,7 @@ Window {
             id: lv
             anchors.fill: parent
             spacing: 5
-            model: monModel
+            model: ListCountryModel{}
             delegate: listDelegate
             clip: true;
 
