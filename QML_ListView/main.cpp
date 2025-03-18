@@ -14,19 +14,19 @@ int main(
     qmlRegisterType<ListCountryModel>("ListCountry", 1, 0, "ListCountryModel");
 
     //ListCountryModel item;
-    CountryList myCountryList;
+    //CountryList myCountryList;
 
     QQmlApplicationEngine engine;
 
 
 
-    QList<QQmlContext::PropertyPair> properties;
-    properties.append(QQmlContext::PropertyPair{"plop", QVariant::fromValue(&myCountryList)});
-    properties.append(QQmlContext::PropertyPair{"papa", QVariant::fromValue(&myCountryList)});
+    //QList<QQmlContext::PropertyPair> properties;
+    //properties.append(QQmlContext::PropertyPair{"plop", QVariant::fromValue(&myCountryList)});
+    //properties.append(QQmlContext::PropertyPair{"papa", QVariant::fromValue(&myCountryList)});
 
 
-    engine.rootContext()->setContextProperty("countryList", &myCountryList);
-    engine.rootContext()->setContextProperties(properties);
+    //engine.rootContext()->setContextProperty("countryList", &myCountryList);
+    //engine.rootContext()->setContextProperties(properties);
 
     QObject::connect(
         &engine,

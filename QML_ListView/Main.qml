@@ -14,13 +14,13 @@ Window {
     ListModel{
         id: monModel
         ListElement {nameCountry: "France"; flag: "fr"}
-        ListElement {nameCountry: "Espagne"; flag: "ES"}
-        ListElement {nameCountry: "Angleterre"; flag: "GB"}
-        ListElement {nameCountry: "USA"; flag: "US"}
-        ListElement {nameCountry: "Allemagne"; flag: "NL"}
-        ListElement {nameCountry: "Bellegique"; flag: "BE"}
-        ListElement {nameCountry: "Bellegique"; flag: "BE"}
-        ListElement {nameCountry: "France"; flag: "FR"}
+        ListElement {nameCountry: "Espagne"; flag: "es"}
+        ListElement {nameCountry: "Angleterre"; flag: "gb"}
+        ListElement {nameCountry: "USA"; flag: "us"}
+        ListElement {nameCountry: "Allemagne"; flag: "nl"}
+        ListElement {nameCountry: "Bellegique"; flag: "be"}
+        ListElement {nameCountry: "Bellegique"; flag: "be"}
+        ListElement {nameCountry: "France"; flag: "fr"}
         ListElement {nameCountry: "Espagne"; flag: ""}
         ListElement {nameCountry: "Angleterre"; flag: ""}
         ListElement {nameCountry: "USA"; flag: ""}
@@ -56,8 +56,8 @@ Window {
                     id: flagImg
                     height: parent.height
                     fillMode: Image.PreserveAspectFit
-                    source: "/flag-icons/ad.svg"
-                    //source: "/flag-icons/"+flag+".svg"
+                    //source: "/flag-icons/ad.svg"
+                    source: "/flag-icons/"+flag+".svg"
                 }
                 Text {
                     id: countryTxt
@@ -97,7 +97,7 @@ Window {
             id: lv
             anchors.fill: parent
             spacing: 5
-            model: ListCountryModel{}
+            model: monModel
             delegate: listDelegate
             clip: true;
 
