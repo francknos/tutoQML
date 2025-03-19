@@ -8,7 +8,7 @@ class CountryList;
 class ListCountryModel : public QAbstractListModel
 {
     Q_OBJECT
-    Q_PROPERTY(CountryList *listCountry READ list WRITE setList)
+    Q_PROPERTY(CountryList *listCountry READ list WRITE setList NOTIFY countryListChanged)
 
 public:
     explicit ListCountryModel(QObject *parent = nullptr);
@@ -34,6 +34,9 @@ public:
 
     CountryList *list() const;
     void setList(CountryList *newList);
+
+signals:
+    void countryListChanged();
 
 private:
     CountryList *mList;

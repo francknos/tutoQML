@@ -1,4 +1,4 @@
-#include "CountryList.h"
+#include "countrylist.h"
 #include "listcountrymodel.h"
 #include <QImage>
 
@@ -103,7 +103,3 @@ void ListCountryModel::setList(CountryList *newList)
     }
     endResetModel();
 }
-
-
-
-

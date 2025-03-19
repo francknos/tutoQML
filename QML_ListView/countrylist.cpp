@@ -42,9 +42,9 @@ void CountryList::append(bool select, QString country, QString countryShort, QSt
 void CountryList::appendItem()
 {
     emit preItemAppend();
-   // CountryItem it;
-   // it.slelected = false;
-   // mItems.append(it);
+    // CountryItem it;
+    // it.slelected = false;
+    // mItems.append(it);
     emit postItemAppend();
 }
 

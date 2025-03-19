@@ -1,13 +1,16 @@
-#include <CountryList.h>
+#include "listcountrymodel.h"
+#include "countrylist.h"
+
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
-#include "listcountrymodel.h"
 
-int main(
-    int argc, char *argv[])
+int main(int argc, char *argv[])
 {
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+#endif
     QGuiApplication app(argc, argv);
 
     qmlRegisterType<ListCountryModel>("ListCountry", 1, 0, "ListCountryModel");
@@ -19,16 +22,21 @@ int main(
     ListCountryModel monModel;
     monModel.setList(&myCountryList);
 
+
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("countryModel", &monModel);
 
+    const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(
         &engine,
-        &QQmlApplicationEngine::objectCreationFailed,
+        &QQmlApplicationEngine::objectCreated,
         &app,
-        []() { QCoreApplication::exit(-1); },
+        [url](QObject *obj, const QUrl &objUrl) {
+            if (!obj && url == objUrl)
+                QCoreApplication::exit(-1);
+        },
         Qt::QueuedConnection);
-    engine.loadFromModule("QML_ListView", "Main");
+    engine.load(url);
 
     return app.exec();
 }
