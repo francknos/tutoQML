@@ -10,7 +10,7 @@ struct CountryItem
     bool slelected;
     QString name;
     QString shortName;
-    QImage flag;
+    QString flag;
 };
 
 class CountryList : public QObject
@@ -22,7 +22,8 @@ public:
     QList<CountryItem> items() const;
 
     bool setItemAt(int index, const CountryItem &item);
-
+    void append(const CountryItem &it);
+    void append(bool select, QString country, QString countryShort, QString flag="");
 
 signals:
     void preItemAppend();

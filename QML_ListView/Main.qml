@@ -12,7 +12,7 @@ Window {
     title: qsTr("Look All Country !")
 
     ListModel{
-        id: monModel
+        id: monModelDur
         ListElement {nameCountry: "France"; flag: "fr"}
         ListElement {nameCountry: "Espagne"; flag: "es"}
         ListElement {nameCountry: "Angleterre"; flag: "gb"}
@@ -52,28 +52,29 @@ Window {
                 anchors.fill: parent
                 anchors.margins: 5
                 spacing: 15
+
                 Image {
                     id: flagImg
                     height: parent.height
                     fillMode: Image.PreserveAspectFit
                     //source: "/flag-icons/ad.svg"
-                    source: "/flag-icons/"+flag+".svg"
+                    source: flag
                 }
                 Text {
                     id: countryTxt
                     anchors.verticalCenter: parent.verticalCenter
                     font.pixelSize: 32
                     font.bold: lv.currentIndex == index
-                    text: model.nameCountry
+                    text: country +" " + shortName
                 }
             }
 
             MouseArea{
                 anchors.fill: parent
-                onDoubleClicked: monModel.insert(index, {nameCountry:"Item #"+monModel.count})
+                //onDoubleClicked: monModel.insert(index, {nameCountry:"Item #"+monModel.count})
                 onClicked: {
                     console.log("lv.idx", lv.currentIndex, "idx", index)
-                    console.log("flag => ",flag, "/flag-icons/"+flag+".svg")
+                    console.log("flag => ",flag)
                     lv.currentIndex = index
                 }
             }
@@ -97,7 +98,7 @@ Window {
             id: lv
             anchors.fill: parent
             spacing: 5
-            model: monModel
+            model: countryModel
             delegate: listDelegate
             clip: true;
 

@@ -29,8 +29,11 @@ QVariant ListCountryModel::data(const QModelIndex &index, int role) const
     case DoneRole:
         return QVariant(item.slelected);
         break;
-    case DescriptionRole:
+    case Country:
         return QVariant(item.name);
+        break;
+    case ShortName:
+        return QVariant(item.shortName);
         break;
     case FlagRole:
         return QVariant(item.flag);
@@ -64,7 +67,8 @@ QHash<int, QByteArray> ListCountryModel::roleNames() const
 {
     QHash<int, QByteArray> names;
     names[DoneRole] = "done";
-    names[DescriptionRole] = "description";
+    names[Country] = "country";
+    names[ShortName] = "shortName";
     names[FlagRole] = "flag";
     return names;
 }

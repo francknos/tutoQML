@@ -3,7 +3,6 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
-#include "countrylist.h"
 #include "listcountrymodel.h"
 
 int main(
@@ -13,20 +12,15 @@ int main(
 
     qmlRegisterType<ListCountryModel>("ListCountry", 1, 0, "ListCountryModel");
 
-    //ListCountryModel item;
-    //CountryList myCountryList;
+    CountryList myCountryList;
+    myCountryList.append(CountryItem({false, "Bretagne", "BZ", "/flag-icons/aw.svg"}));
+    myCountryList.append(false, "Coco", "co", "/flag-icons/as.svg");
+
+    ListCountryModel monModel;
+    monModel.setList(&myCountryList);
 
     QQmlApplicationEngine engine;
-
-
-
-    //QList<QQmlContext::PropertyPair> properties;
-    //properties.append(QQmlContext::PropertyPair{"plop", QVariant::fromValue(&myCountryList)});
-    //properties.append(QQmlContext::PropertyPair{"papa", QVariant::fromValue(&myCountryList)});
-
-
-    //engine.rootContext()->setContextProperty("countryList", &myCountryList);
-    //engine.rootContext()->setContextProperties(properties);
+    engine.rootContext()->setContextProperty("countryModel", &monModel);
 
     QObject::connect(
         &engine,

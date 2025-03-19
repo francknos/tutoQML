@@ -4,8 +4,8 @@ CountryList::CountryList(
     QObject *parent)
     : QObject{parent}
 {
-    mItems.append({true, "France", "FR", QImage("/flag-icons/1.jpg") });
-    mItems.append({false, "Bretagne", "BZ", QImage("/flag-icons/fr.svg") });
+    mItems.append({true, "France", "FR", "/flag-icons/1.jpg" });
+    mItems.append({false, "Bretagne", "BZ", "/flag-icons/fr.svg" });
 }
 
 QList<CountryItem> CountryList::items() const
@@ -26,12 +26,25 @@ bool CountryList::setItemAt(int index, const CountryItem &item)
     return true;
 }
 
+void CountryList::append(const CountryItem &it)
+{
+    mItems.append(it);
+}
+
+void CountryList::append(bool select, QString country, QString countryShort, QString flag)
+{
+    CountryItem it{select,country, countryShort, flag};
+    mItems.append(it);
+}
+
+
+
 void CountryList::appendItem()
 {
     emit preItemAppend();
-    CountryItem it;
-    it.slelected = false;
-    mItems.append(it);
+   // CountryItem it;
+   // it.slelected = false;
+   // mItems.append(it);
     emit postItemAppend();
 }
 

@@ -15,7 +15,8 @@ public:
 
     enum {
         DoneRole = Qt::UserRole,
-        DescriptionRole,
+        Country,
+        ShortName,
         FlagRole
     };
 
