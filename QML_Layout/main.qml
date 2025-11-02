@@ -2,6 +2,7 @@ import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Layouts 1.3
 import QtCharts 2.13
+import CPP.Team 1.0
 
 Window {
     id: root
@@ -59,15 +60,17 @@ Window {
         anchors.top: parent.top
         radius: 10
         anchors.horizontalCenter: parent.horizontalCenter
-        height: 50
+        height: 80
         width: 300
         clip: true
         Text {
             id: teams2
-            text: qsTr("Franck FURIC, Jean-Marie REMOLEUR, François WIBAUX, Vincent CHATELIN, Pierre-Yves LENAOUR")
-            font.pointSize: 30
+            text: SoftTeam.getRndTeamNames()
+            font.pointSize: 20
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
             verticalAlignment: Text.AlignVCenter
-            horizontalAlignment: Text.AlignHCenter
+
             PropertyAnimation on x
             {
                 id: anim_text
@@ -75,18 +78,24 @@ Window {
                 to: -teams2.width + top_message.width
                 duration: 6000
                 //running: false
-                //easing.type: Easing.InOutQuad
             }
         }
 
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                console.log("Taille teams2.width " + teams2.width)
-                console.log("Taille top_message.x " + top_message.x)
-                console.log("Taille top_message.width " + top_message.width)
-                anim_text.start()
+                teams2.text = SoftTeam.getRndTeamNames()
+                //anim_text.start()
             }
         }
     }
+
+    function showArray(e)
+    {
+        console.log("Show Array")
+        for(var i in e)
+            console.log(e[i])
+    }
 }
+
+

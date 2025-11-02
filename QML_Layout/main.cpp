@@ -1,5 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlContext>
+#include "team.h"
 
 int main(int argc, char *argv[])
 {
@@ -7,6 +9,9 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
     QGuiApplication app(argc, argv);
+
+    QSharedPointer<Team> t = QSharedPointer<Team>::create();
+    qmlRegisterSingletonInstance<Team>("CPP.Team",1,0,"SoftTeam", t.data());
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));
